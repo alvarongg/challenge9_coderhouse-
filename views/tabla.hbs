@@ -1,0 +1,27 @@
+<h1>Listado de productos Faker.js</h1>
+<hr>
+<table border="1">
+  <caption></caption>
+  <tbody>
+        <tr>
+  <th>Id</th>
+  <th>Title</th>
+  <th>Price</th>
+  <th>Thumbnail</th>
+    </tr>
+      {{#each array}}
+     <tr>
+  <td>{{id}}</td>  
+  <td>{{title}}</td>
+  <td>{{price}}</td>
+  <td>{{thumbnail}}</td>
+
+    </tr>
+      {{/each}}
+</tbody>
+</table>
+
+<br><br>
+    <form action="/api/productos/formulario"  method="get">
+    <input type="submit" value="Ir al formulario de carga de productos">
+     </form>

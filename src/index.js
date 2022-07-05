@@ -2,6 +2,7 @@ const express = require("express");
 const path = require('path');
 const moment = require('moment'); 
 const {productRouter,getAllProd,saveProd }= require("./productRouter.js");
+const productRouterTest = require("./productRouter-test.js");
 const { engine } = require("express-handlebars");
 const { Server: HttpServer } = require('http');
 const { Server: SocketServer } = require('socket.io');
@@ -33,6 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/productos", productRouter);
+
+app.use("/api/productos-test", productRouterTest);
 
 app.get('/', (req, res) => {
     res.render('main');
