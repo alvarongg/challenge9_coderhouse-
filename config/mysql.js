@@ -1,8 +1,8 @@
 const Knex = require('knex').default;
 const path = require('path');
-let options_path = path.join(__dirname, '..' ,'options.js');
+let options_path = path.join(__dirname, '..' ,'DB','options.js');
 console.log(options_path);
-const { optionsMySQL } = require('../options.js');
+const { optionsMySQL } = require(options_path);
 console.log(optionsMySQL);
 const knex = Knex({
   client: 'mysql2',

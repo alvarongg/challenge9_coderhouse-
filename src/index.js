@@ -6,15 +6,17 @@ const productRouterTest = require("./productRouter-test.js");
 const { engine } = require("express-handlebars");
 const { Server: HttpServer } = require('http');
 const { Server: SocketServer } = require('socket.io');
-const MensajesSqlite = require("./mensajes.js");
-let options_path = path.join(__dirname,'..', 'DB','options.js');
-const { optionsSqlite } = require(options_path);
+//const MensajesSqlite = require("./mensajes.js");
+const MensajesFs = require("./mensajes.js");
+
+// let options_path = path.join(__dirname,'..', 'DB','options.js');
+// const { optionsSqlite } = require(options_path);
 const app = express();
 
 const tabla_chat = 'mensajes';
-
-let chat = new MensajesSqlite(optionsSqlite,tabla_chat);
-
+let options_path = path.join(__dirname,'..', 'DB','mensajes.json');
+//let chat = new MensajesSqlite(optionsSqlite,tabla_chat);
+let chat = new MensajesFs(options_path);
 
 let views_path = path.join(__dirname, '..', 'views');
 app.use(express.static('public'));

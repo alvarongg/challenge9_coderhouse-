@@ -46,7 +46,7 @@ productRouterTest.get("/", async (req, res) => {
    
     res.render('tabla',{array});
   } catch (error) {
-    throw error //new Error("Hubo un error al listar todos los productos");
+    throw new Error("Hubo un error al listar todos los productos fake");
   }
 });
 
