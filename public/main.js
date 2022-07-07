@@ -1,4 +1,14 @@
+import norm from "normalizr";
+
 const socket = io();
+
+const authorSchema = new normalizr.schema.Entity("authors",{},{idAttribute:"email"})
+const messageSchema = new normalizr.schema.Entity("messages",{
+    author:authorSchema
+})
+const messagesListSchema = new normalizr.schema.Entity("messagesList",{
+    messages: [messageSchema]
+})
 
 const enviarMensaje = () => {
   const author = document.getElementById("author").value;
@@ -9,10 +19,10 @@ const enviarMensaje = () => {
 }
 
 const crearEtiquetasMensaje = (mensaje) => {
-  const { author, text, date } = mensaje;
+  const { email,nombre,apellido,edad,alias,avatar,date,text} = mensaje;
   return `
     <div class="message">
-      <strong  class="badge badge-pill badge-primary email">${author}</strong>
+      <strong  class="badge badge-pill badge-primary email">${alias}</strong>
       <em class="date">${date}</em>
       <em class="msj">${text}</em>
     </div>

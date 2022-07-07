@@ -1,9 +1,6 @@
 console.log("Container File System -- Cargado");
 const fs = require("fs");
-import norm from "normalizr";
 
-
-const commenterSchema = new norm.schema.Entity('commenters');
 
 /**
  * Lee un array de objetos dentro de un archivo, retorna un array de objetos json
