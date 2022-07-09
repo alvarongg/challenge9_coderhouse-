@@ -8,16 +8,16 @@ Ahora, vamos a reformar el formato de los mensajes y la forma de comunicación d
 El nuevo formato de mensaje será:
 ```json
 
-  { 
-    author: {
-        id: 'mail del usuario', 
-        nombre: 'nombre del usuario', 
-        apellido: 'apellido del usuario', 
-        edad: 'edad del usuario', 
-        alias: 'alias del usuario',
-        avatar: 'url avatar (foto, logo) del usuario'
-    },
-    text: 'mensaje del usuario'
+{
+   "author":{
+      "id":"mail del usuario",
+      "nombre":"nombre del usuario",
+      "apellido":"apellido del usuario",
+      "edad":"edad del usuario",
+      "alias":"alias del usuario",
+      "avatar":"url avatar (foto, logo) del usuario"
+   },
+   "text":"mensaje del usuario"
 }
 
 ```
