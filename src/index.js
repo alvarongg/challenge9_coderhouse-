@@ -35,13 +35,13 @@ app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api/productos", productRouter);
-
+//app.use("/api/productos", productRouter);
 app.use("/api/productos-test", productRouterTest);
 
-app.get('/', (req, res) => {
-    res.render('main');
-  });
+
+// app.get('/', (req, res) => {
+//     res.render('main');
+//   });
 
   app.get('/chat', (req, res) => {
     res.render('new_chat');
@@ -58,7 +58,7 @@ socketServer.on('connection', async (socket) => {
 
   //emite los mensajes y productos actuales
   socket.emit('messages', await chat.normalize());
- // socket.emit('products', await getAllProd());
+  socket.emit('products', await getAllProd());
 
   // socket.on('new_product', async  (producto) => {
   //   //inserta el producto que le llego 

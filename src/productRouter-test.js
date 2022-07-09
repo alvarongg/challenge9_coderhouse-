@@ -18,20 +18,8 @@ function createRandomProduct() {
 }
 
 
-
-
-
 productRouterTest.use(express.json());
 productRouterTest.use(express.urlencoded({ extended: true }));
-
-// async function getAllProd(){
-//   const resultado = await productos.getAll();
-//   return resultado;
-// }
-
-// async function saveProd(obj){
-//   await productos.save(obj);
-// }
 
 //devuelve todos los productos
 productRouterTest.get("/", async (req, res) => {
