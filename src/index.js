@@ -43,6 +43,10 @@ app.get('/', (req, res) => {
     res.render('main');
   });
 
+  app.get('/chat', (req, res) => {
+    res.render('new_chat');
+  });
+
 // app.listen(8080, () => {
 //   console.log("Estoy escuchando 8080 --engine handlebars");
 // });
@@ -53,22 +57,23 @@ const socketServer = new SocketServer(httpServer);
 socketServer.on('connection', async (socket) => {
 
   //emite los mensajes y productos actuales
-  socket.emit('messages', await chat.getAll());
-  socket.emit('products', await getAllProd());
+  socket.emit('messages', await chat.normalize());
+ // socket.emit('products', await getAllProd());
 
-  socket.on('new_product', async  (producto) => {
-    //inserta el producto que le llego 
-    console.log(`saved prod: ${producto}`);
-     saveProd(producto);
-    socketServer.sockets.emit('products', await getAllProd());
+  // socket.on('new_product', async  (producto) => {
+  //   //inserta el producto que le llego 
+  //   console.log(`saved prod: ${producto}`);
+  //    saveProd(producto);
+  //   socketServer.sockets.emit('products', await getAllProd());
   
-  });
+  // });
 
+  
   socket.on('new_message',async (mensaje) => {
-    const fechaActual = moment();
-    mensaje.date = fechaActual.format("DD/MM/YYYY HH:MM:SS");
+    console.log('ejecutando  guardado de mensaje');
     await  chat.save(mensaje);
-    socketServer.sockets.emit('messages', await chat.getAll());
+    console.log('nuevo mensaje guardado');
+    socketServer.sockets.emit('messages', await chat.normalize());
  
   });
   

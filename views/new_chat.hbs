@@ -1,19 +1,21 @@
 <h1>Super chat con Normalizacion</h1>
 <hr />
 <div class="chat">
-
+   <h2 class="title" id="compressionPercentage"></h2>
   <form onsubmit="return enviarMensaje()">
-    <input type="text" id="email" placeholder="Email@email.com" />
-    <input type="text" id="nombre" placeholder="Escriba su Nombre" />
-    <input type="text" id="apellido" placeholder="Escriba su Apellido" />
-    <input type="text" id="edad" placeholder="Escriba su Edad" />
-    <input type="text" id="alias" placeholder="Escriba su Alias" />
-    <input type="text" id="avatar" placeholder="url:foto" />
-    <input type="text" id="text" placeholder="Escriba su mensaje" />
-    <button type="submit" class="btn btn-info"><i
-        class="fa fa-send"
-      ></i></button>
+    <input type="email" id="email" placeholder="Ingrese su email" required>
+            <input type="text" id="name" placeholder="Ingrese su nombre" required/>
+            <input type="text" id="surname" placeholder="Ingrese su apellido" required/>
+            <input type="number" id="age" placeholder="Ingrese su edad" required/>
+            <input type="text" id="alias" placeholder="Ingrese su alias" required/>
+            <input type="text" id="avatar" placeholder="Ingrese su Avatar (url)" required/>
+            <hr>
+            <div id="messagesContainer"></div>
+            <label for="message"> Ingrese su mensaje:</label>
+            <input type="text" id="message" required>
+            <input type="submit" class="btn btn-primary my-3" value="Enviar!">
   </form>
   <div id="messages"></div>
 
 </div>
+

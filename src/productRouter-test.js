@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require('path');
 const productRouterTest = express.Router();
-console.log("Router Productos cargados");
+console.log("Router Productos-Fake -- Cargado");
 const { faker } = require('@faker-js/faker');
 let options_path = path.join(__dirname,'..', 'DB','options.js');
 const { optionsMySQL } = require(options_path);

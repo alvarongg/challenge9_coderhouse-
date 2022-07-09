@@ -1,6 +1,16 @@
 console.log("Container File System Mensajes -- Cargado");
+const path = require('path');
 const fs = require("fs");
+//let schema_path = path.join(__dirname,'.', 'util','mensajes.json');
+const normalizr = require ("normalizr");
 
+const authorSchema = new normalizr.schema.Entity("authors",{},{idAttribute:"email"})
+const messageSchema = new normalizr.schema.Entity("messages",{
+    author:authorSchema
+})
+const messagesListSchema = new normalizr.schema.Entity("messagesList",{
+    messages: [messageSchema]
+})
 
 /**
  * Lee un array de objetos dentro de un archivo, retorna un array de objetos json
@@ -71,7 +81,8 @@ module.exports = class MensajesFs {
    * @returns Id del objeto guardado
    */
   async save(obj) {
-    try {
+    try { 
+      console.log('save');
         //chequeo que el archivo exista si no existe lo creo
          await fileChecker(this.fileName);
       let array = await fileToArray(this.fileName);
@@ -103,6 +114,7 @@ module.exports = class MensajesFs {
    */
   async getAll() {
     try {
+      console.log('getAll');
       await fileChecker(this.fileName);
       return  fileToArray(this.fileName);
     } catch (error) {
@@ -110,7 +122,29 @@ module.exports = class MensajesFs {
     }
   }
 
+/**
+ * 
+ * @returns lista de mensajes normalizados
+ */
+  async normalize(){
+    const messages = await this.getAll();
+    const messagesToNormalize = {
+      id:1,
+      messages:messages
+    }
+    const normalized = normalizr.normalize(messagesToNormalize, messagesListSchema);
+    return normalized
+  }
+
 };
 
 
+//   const  prueba = async () => {
 
+//   let options_path = path.join(__dirname,'..', 'DB','mensajes.json');
+//   const mensajes = new MensajesFs(options_path);
+//   console.log( await mensajes.normalize());
+// };
+
+
+// prueba();

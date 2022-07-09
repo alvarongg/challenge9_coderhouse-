@@ -8,4 +8,4 @@ const messagesListSchema = new normalizr.schema.Entity("messagesList",{
     messages: [messageSchema]
 })
 
-module.exports = (messagesListSchema)
+module.exports = (messagesListSchema);
