@@ -39,9 +39,9 @@ app.use(express.json());
 app.use("/api/productos-test", productRouterTest);
 
 
-// app.get('/', (req, res) => {
-//     res.render('main');
-//   });
+app.get('/', (req, res) => {
+    res.render('main');
+  });
 
   app.get('/chat', (req, res) => {
     res.render('new_chat');
