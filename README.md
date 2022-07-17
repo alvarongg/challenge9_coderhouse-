@@ -54,3 +54,9 @@ npm run start
 * [Normalizr](https://github.com/paularmstrong/normalizr)
 
 
+## ppt 24 
+https://docs.google.com/presentation/d/1B2G4mLToIxlNE9_gjV0S4_p3rxfxjmxBvcWDogWtI5g/edit
+
+
+## ppt 26 
+https://docs.google.com/presentation/d/1jc2JvLefomv1T714rVkKVNsinrQ54Q7tle7Fl43DowQ/edit#slide=id.geefa9019ca_0_894

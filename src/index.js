@@ -18,6 +18,20 @@ let options_path = path.join(__dirname,'..', 'DB','mensajes.json');
 //let chat = new MensajesSqlite(optionsSqlite,tabla_chat);
 let chat = new MensajesFs(options_path);
 
+//Session config
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGOATLAS,
+      mongoOptions: adavancedOptions,
+    }),
+    secret: "secreto",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+
 let views_path = path.join(__dirname, '..', 'views');
 app.use(express.static('public'));
 
